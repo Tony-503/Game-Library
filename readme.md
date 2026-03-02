@@ -29,10 +29,9 @@ The following **additional** features are implemented:
 - [ ] List anything else that you added to improve the site's functionality!
 
 ## Video Walkthrough
-
-**Note: please be sure to 
-
 Here's a walkthrough of implemented required features:
+[Video Walkthrough](https://www.loom.com/share/2c01aae9eaf543b1a3b66719cea24f6c)
+
 
 <img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
