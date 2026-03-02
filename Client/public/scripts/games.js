@@ -23,33 +23,26 @@ const renderGames = async () => {
         image.alt = `${game.name} cover art`;
         topSection.appendChild(image);
 
-        const textContainer = document.createElement('div');
-        textContainer.classList.add('text-container');
-        topSection.appendChild(textContainer); 
-
         const name = document.createElement('h3');
         name.textContent = game.name;
-        textContainer.appendChild(name);
+        buttomSection.appendChild(name);
 
         const pricePoint = document.createElement('p');
         pricePoint.textContent = 'Price: $' + game.pricePoint;
-        textContainer.appendChild(pricePoint);
+        buttomSection.appendChild(pricePoint);
 
         const audience = document.createElement('p');
         audience.textContent = 'Audience: ' + game.audience;
-        textContainer.appendChild(audience);
+        buttomSection.appendChild(audience);
 
         const link = document.createElement('a');
         link.textContent = 'More Details';
         link.classList.add('details-link');
         link.setAttribute('role', 'button');
+        
         const slug = game.name
-          .toLowerCase()
-          .trim()
-          .replace(/[^a-z0-9]+/g, '-')
-          .replace(/(^-|-$)/g, '');
-        link.href = `/games/${game.id}-${slug}`;
-        textContainer.appendChild(link);
+        link.href = `/games/${game.id}-${slug.toLowerCase().replace(/\s+/g, '-')}`;
+        buttomSection.appendChild(link);
 
         card.appendChild(topSection);
         card.appendChild(buttomSection);
@@ -61,8 +54,14 @@ const renderGames = async () => {
       message.textContent = 'No games found.';
       mainContainer.appendChild(message);
     }
+} 
+
+const path = window.location.pathname;
+const isHomePage = path === '/' || path.endsWith('/index.html');
+
+if (isHomePage) {
+  renderGames();
+} else {
+  window.location.href = '/404.html';
 }
 
-
-
-renderGames();

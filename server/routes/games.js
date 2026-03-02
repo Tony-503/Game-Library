@@ -1,7 +1,7 @@
 import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import games from '../data/games.js';
+import gamesData from '../data/games.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -9,7 +9,7 @@ const __dirname = path.dirname(__filename);
 const router = express.Router();
 
 router.get('/', (req, res) => {
-    res.status(200).json(games);
+    res.status(200).json(gamesData);
 });
 
 router.get('/:gameid', (req, res) => {

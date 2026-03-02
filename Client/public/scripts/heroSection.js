@@ -46,11 +46,7 @@ const renderHeroSection = async () => {
         more.textContent = 'More Details';
         more.setAttribute('role', 'button');
         const slug = games[ramdomIndex].name
-            .toLowerCase()
-            .trim()
-            .replace(/[^a-z0-9]+/g, '-')
-            .replace(/(^-|-$)/g, '');
-        more.href = `/games/${games[ramdomIndex].id}-${slug}`;
+        more.href = `/games/${games[ramdomIndex].id }-` + slug.toLowerCase().replace(/\s+/g, '-');
         secondContainer.appendChild(more);
 
 
@@ -65,4 +61,7 @@ const renderHeroSection = async () => {
     }
 }
 
-renderHeroSection();
+
+
+    renderHeroSection()
+

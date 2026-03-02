@@ -39,7 +39,9 @@ const renderGames = async () => {
         link.textContent = 'More Details';
         link.classList.add('details-link');
         link.setAttribute('role', 'button');
-        link.href = `/games/${game.id}`;
+       
+        const slug = game.name
+        link.href = `/games/${game.id}-${slug.toLowerCase().replace(/\s+/g, '-')}`;
         buttomSection.appendChild(link);
 
         card.appendChild(topSection);
@@ -52,8 +54,14 @@ const renderGames = async () => {
       message.textContent = 'No games found.';
       mainContainer.appendChild(message);
     }
+} 
+
+
+const path = window.location.pathname;
+const isHomePage = path === '/' || path.endsWith('/index.html');
+
+if (isHomePage) {
+  renderGames();
+} else {
+  window.location.href = '/404.html';
 }
-
-
-
-renderGames();
