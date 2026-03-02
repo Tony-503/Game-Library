@@ -23,24 +23,33 @@ const renderGames = async () => {
         image.alt = `${game.name} cover art`;
         topSection.appendChild(image);
 
+        const textContainer = document.createElement('div');
+        textContainer.classList.add('text-container');
+        topSection.appendChild(textContainer); 
+
         const name = document.createElement('h3');
         name.textContent = game.name;
-        buttomSection.appendChild(name);
+        textContainer.appendChild(name);
 
         const pricePoint = document.createElement('p');
         pricePoint.textContent = 'Price: $' + game.pricePoint;
-        buttomSection.appendChild(pricePoint);
+        textContainer.appendChild(pricePoint);
 
         const audience = document.createElement('p');
         audience.textContent = 'Audience: ' + game.audience;
-        buttomSection.appendChild(audience);
+        textContainer.appendChild(audience);
 
         const link = document.createElement('a');
         link.textContent = 'More Details';
         link.classList.add('details-link');
         link.setAttribute('role', 'button');
-        link.href = `/games/${game.id}`;
-        buttomSection.appendChild(link);
+        const slug = game.name
+          .toLowerCase()
+          .trim()
+          .replace(/[^a-z0-9]+/g, '-')
+          .replace(/(^-|-$)/g, '');
+        link.href = `/games/${game.id}-${slug}`;
+        textContainer.appendChild(link);
 
         card.appendChild(topSection);
         card.appendChild(buttomSection);

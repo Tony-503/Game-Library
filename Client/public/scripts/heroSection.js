@@ -15,23 +15,24 @@ const renderHeroSection = async () => {
         secondContainer.classList.add('second-container');
         headerSection.appendChild(secondContainer);
      
-
-        message.textContent = 'Welcome to Game Library!';
+        const title = document.createElement('h2');
+        title.textContent = 'Welcome to Game Library!';
+        title.classList.add('featured-game-title');
         
-        secondContainer.appendChild(message);
+        secondContainer.appendChild(title);
 
-
-        const name = document.createElement('h3');
-        name.textContent = games[ramdomIndex].name;
-        name.classList.add('featured-game-name');
-        secondContainer.appendChild(name);
-          
-        
 
         const text = document.createElement('h3');
         text.textContent = 'Featured Game';
         text.classList.add('featured-game-text');
         secondContainer.appendChild(text);
+
+        const name = document.createElement('h3');
+        name.textContent = games[ramdomIndex].name;
+        name.classList.add('featured-game-name');
+        secondContainer.appendChild(name);
+
+        
 
         const description = document.createElement('p');
         description.textContent = games[ramdomIndex].description;
@@ -44,7 +45,12 @@ const renderHeroSection = async () => {
         const more = document.createElement('a');
         more.textContent = 'More Details';
         more.setAttribute('role', 'button');
-        more.href = `/games/${games[ramdomIndex].id}`;
+        const slug = games[ramdomIndex].name
+            .toLowerCase()
+            .trim()
+            .replace(/[^a-z0-9]+/g, '-')
+            .replace(/(^-|-$)/g, '');
+        more.href = `/games/${games[ramdomIndex].id}-${slug}`;
         secondContainer.appendChild(more);
 
 
