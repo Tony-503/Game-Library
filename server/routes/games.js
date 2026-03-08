@@ -1,16 +1,14 @@
 import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import gamesData from '../data/games.js';
+import {getGames} from '../controllers/gifts.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
-    res.status(200).json(gamesData);
-});
+router .get('/', getGames);
 
 router.get('/:gameid', (req, res) => {
     res.status(200).sendFile(path.resolve(__dirname, '../public/game.html'));
