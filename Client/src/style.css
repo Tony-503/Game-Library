@@ -304,3 +304,21 @@ button {
 }
 
 
+.search{
+    display: flex;
+    justify-content: center;
+    margin-top: 16px;
+    width: 100%;
+  
+}
+#searchInput {
+    width: 100%;
+    max-width: 400px;
+    padding: 8px 16px;
+    border: 1px solid #cccccc;
+    background-color:#cccccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+
