@@ -23,10 +23,13 @@ The following **required** functionality is completed:
 The following **optional** features are implemented:
 
 - [x] The web app displays items in a unique format, such as cards rather than lists or animated list items
+<!-- Make sure to check off completed functionality below -->
+- [x] **The web app uses only HTML, CSS, and JavaScript without a frontend framework**
+- [x] **The web app is connected to a PostgreSQL database, with an appropriately structured database table for the list items**
 
-The following **additional** features are implemented:
+The following **optional** features are implemented:
 
-- [ ] List anything else that you added to improve the site's functionality!
+- [x] The user can search for items by a specific attribute
 
 ## Video Walkthrough
 Here's a walkthrough of implemented required features:
