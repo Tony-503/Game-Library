@@ -1,10 +1,10 @@
-# WEB103 Project 1 - *Name of App Here*
+# WEB103 Project 1 - *Game Library*
 
-Submitted by: **Your name here**
+Submitted by: **Tony Hernandez**
 
-About this web app: **App description here**
+About this web app: **App the diplay data for the user in cards making organize**
 
-Time spent: **X** hours
+Time spent: **6** hours
 
 ## Required Features
 
