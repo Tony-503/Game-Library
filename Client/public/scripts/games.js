@@ -1,20 +1,6 @@
 let allGames = [];
 
 
-const normalizeGame = (game) => ({
-  ...game,
-  pricePoint: game.pricePoint ?? game.price_point ?? '',
-  submittedBy: game.submittedBy ?? game.submitted_by ?? '',
-  submittedOn: game.submittedOn ?? game.submitted_on ?? ''
-});
-
-
-const getSearchValue = (game, attribute) => {
-  const value = game[attribute];
-  return typeof value === 'string' ? value.toLowerCase() : String(value ?? '').toLowerCase();
-};
-
-
 
 const renderGameCards = (games) => {
   const mainContainer = document.querySelector('.main-container');
@@ -71,32 +57,26 @@ const renderGameCards = (games) => {
 
 const applySearchAndRender = () => {
   const searchInput = document.querySelector('#searchInput');
-  const searchAttribute = document.querySelector('#searchAttribute');
   const text = (searchInput?.value || '').toLowerCase().trim();
-  const attribute = searchAttribute?.value || 'name';
 
-  const filtered = allGames.filter((game) => getSearchValue(game, attribute).includes(text));
+  const filtered = allGames.filter((game) =>
+    game.name.toLowerCase().includes(text)
+  );
 
   renderGameCards(filtered);
 };
 
 const setupSearchListener = () => {
   const searchInput = document.querySelector('#searchInput');
-  const searchAttribute = document.querySelector('#searchAttribute');
-  if (!searchInput || !searchAttribute) return;
+  if (!searchInput) return;
 
   searchInput.addEventListener('input', applySearchAndRender);
-  searchAttribute.addEventListener('change', () => {
-    searchInput.placeholder = `Search by ${searchAttribute.options[searchAttribute.selectedIndex].text.toLowerCase()}...`;
-    applySearchAndRender();
-  });
 };
 
 const renderGames = async () => {
   try {
     const response = await fetch('/api/games');
-    const games = await response.json();
-    allGames = games.map(normalizeGame);
+    allGames = await response.json();
     renderGameCards(allGames);
     setupSearchListener();
   } catch (error) {
