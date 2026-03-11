@@ -10,45 +10,58 @@ const renderHeroSection = async () => {
 
         headerSection.style.backgroundImage = `url('${games[ramdomIndex].image}')`;
         const message = document.createElement('h2');
+
+        const secondContainer = document.createElement('div');
+        secondContainer.classList.add('second-container');
+        headerSection.appendChild(secondContainer);
      
-
-        message.textContent = 'Welcome to Game Library!';
+        const title = document.createElement('h2');
+        title.textContent = 'Welcome to Game Library!';
+        title.classList.add('featured-game-title');
         
-        headerSection.appendChild(message);
+        secondContainer.appendChild(title);
 
-
-        const name = document.createElement('h3');
-        name.textContent = games[ramdomIndex].name;
-        name.classList.add('featured-game-name');
-        headerSection.appendChild(name);
-          
-        
 
         const text = document.createElement('h3');
         text.textContent = 'Featured Game';
         text.classList.add('featured-game-text');
-        headerSection.appendChild(text);
+        secondContainer.appendChild(text);
+
+        const name = document.createElement('h3');
+        name.textContent = games[ramdomIndex].name;
+        name.classList.add('featured-game-name');
+        secondContainer.appendChild(name);
+
+        
 
         const description = document.createElement('p');
         description.textContent = games[ramdomIndex].description;
-        headerSection.appendChild(description);
+        secondContainer.appendChild(description);
 
         const  pricePoint = document.createElement('p');
         pricePoint.textContent = 'Price:' + games[ramdomIndex].pricePoint;
-        headerSection.appendChild(pricePoint);
+        secondContainer.appendChild(pricePoint);
 
         const more = document.createElement('a');
         more.textContent = 'More Details';
         more.setAttribute('role', 'button');
-        more.href = `/games/${games[ramdomIndex].id}`;
-        headerSection.appendChild(more);
+        const slug = games[ramdomIndex].name
+        more.href = `/games/${games[ramdomIndex].id }-` + slug.toLowerCase().replace(/\s+/g, '-');
+        secondContainer.appendChild(more);
 
 
     }else{
         const message = document.createElement('h2');
         message.textContent = 'Welcome to Game Library! Explore our collection of games and find your next adventure.';
-        headerSection.appendChild(message);
+
+        const secondContainer = document.createElement('div');
+        secondContainer.classList.add('second-container');
+        headerSection.appendChild(secondContainer);
+        secondContainer.appendChild(message);
     }
 }
 
-renderHeroSection();
+
+
+    renderHeroSection()
+

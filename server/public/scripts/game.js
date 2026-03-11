@@ -1,7 +1,9 @@
 const rendergame = async () => {
 
-    const requestID = parseInt(window.location.href.split('/').pop(), 10);
-
+    const slugSegment = window.location.pathname.split('/').pop() || '';
+    const requestID = Number(slugSegment.split('-')[0]);
+    
+    
     const response = await fetch(`/games`);
     const data = await response.json();
 

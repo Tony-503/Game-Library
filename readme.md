@@ -23,13 +23,38 @@ The following **required** functionality is completed:
 The following **optional** features are implemented:
 
 - [x] The web app displays items in a unique format, such as cards rather than lists or animated list items
-<!-- Make sure to check off completed functionality below -->
-- [x] **The web app uses only HTML, CSS, and JavaScript without a frontend framework**
 - [x] **The web app is connected to a PostgreSQL database, with an appropriately structured database table for the list items**
 
-The following **optional** features are implemented:
-
 - [x] The user can search for items by a specific attribute
+
+## PostgreSQL Database
+
+The app uses PostgreSQL for the `games` table. The schema is created and seeded from [server/config/reset.js](c:/Users/tonyh/Game-Library/server/config/reset.js).
+
+```sql
+CREATE TABLE IF NOT EXISTS games (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  price_point VARCHAR(20) NOT NULL,
+  audience VARCHAR(100) NOT NULL,
+  image TEXT NOT NULL,
+  description TEXT NOT NULL,
+  submitted_by VARCHAR(100) NOT NULL,
+  submitted_on TIMESTAMP NOT NULL
+);
+```
+
+Database connection settings are loaded from environment variables in [server/config/database.js](c:/Users/tonyh/Game-Library/server/config/database.js): `PGUSER`, `PGPASSWORD`, `PGHOST`, `PGPORT`, and `PGDATABASE`.
+
+Example seeded fields come from [server/data/games.js](c:/Users/tonyh/Game-Library/server/data/games.js), including:
+
+- `name`
+- `price_point`
+- `audience`
+- `image`
+- `description`
+- `submitted_by`
+- `submitted_on`
 
 ## Video Walkthrough
 Here's a walkthrough of implemented required features:
@@ -39,7 +64,7 @@ Here's a walkthrough of implemented required features:
 [Video Walkthrough](https://www.loom.com/share/45bf1549e26f4f67b9eafc703bd15aca)
 
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
 
 <!-- Replace this with whatever GIF tool you used! -->
 GIF created with ...  Add GIF tool here
