@@ -1,16 +1,17 @@
 import express from 'express';
 import path from 'path';
+import cors from 'cors';
 
 import { fileURLToPath } from 'url';
 import gamesRouter from './routes/games.js';
 
 const app = express();
+app.use(cors());
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-app.use('/public', express.static('public'));
 
-app.use('/scripts', express.static('./public/scripts'));
 app.use('/games', gamesRouter);
 
 app.get('/404.html', (req, res) => {
